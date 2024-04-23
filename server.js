@@ -1,6 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const cors = require('cors');
+app.use(cors());
+app.options('*', cors());
+
 const port = 3000;
 
 // Sample graph data to be edited later with DB data
@@ -48,6 +52,7 @@ app.use(bodyParser.json());
 
 // Endpoint to serve graph data
 app.get('/graph-data', (req, res) => {
+    console.log('Data processing----->')
     res.json(graphData);
 });
 
